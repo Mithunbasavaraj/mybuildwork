@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+
+<div class="content d-flex justify-content-center ">
+<!-- Recent Activities -->
+					<div class="col-xxl-6 col-xl-6 d-flex">
+						<div class="card flex-fill">
+							<div class="card-header pb-2 d-flex align-items-center justify-content-between flex-wrap">
+								<h5 class="mb-2">Project Progress</h5>
+							</div>
+							<div class="card-body">
+								{% for posts in post  %}
+								<div class="recent-item">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex align-items-center w-100">
+											<a href="{{posts.photo.url}}" target="_blank" class="avatar  flex-shrink-0">
+												<img src="{{posts.photo.url}}" class="rounded-circle" alt="img">
+											</a>
+											<div class="ms-2 flex-fill">
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">{{posts.status}}</a></h6>
+													<p class="fs-13">{{posts.date}}</p>
+												</div>
+												<p class="fs-13">{{posts.details}} <span class="text-primary">by {{posts.user.first_name}}</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							
+							</div>
+						</div>
+					</div>
+					<!-- /Recent Activities -->
+				</div>
+
+{% endblock content %}

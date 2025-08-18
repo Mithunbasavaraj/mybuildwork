@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+
+								<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+		{% if total_amount %}
+		<h3 class="mb-2">Total - {{total_amount}} Rs</h3>
+		{% endif %}
+      <div class="card">
+        
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+					<th>Date </th> 
+					<th>Added By</th> 
+					<th>Details</th>
+                  <th>Cost</th>
+                  <th>Download</th>
+                 
+                 
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+					<td><h6 class="fw-medium">{{posts.date}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.user.first_name}} {{posts.user.last_name}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.details}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.cost}}</h6></td>
+                 
+                  <td>
+                    <div class="action-icon d-inline-flex">
+                      <a href="{{posts.photo.url}}" class="me-5"
+                        ><i class="ti ti-download text-success"></i
+                      ></a>
+                
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+{% endblock content %}

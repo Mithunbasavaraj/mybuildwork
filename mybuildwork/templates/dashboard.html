@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% load static %} {% load widget_tweaks %} 
+{% block content %}
+
+<div class="content">
+  <!-- Widget Info -->
+  <div class="col-xxl-12 d-flex">
+    <div class="row flex-fill">
+      {% comment %} {% if request.user.designation == "Investor" or request.user.designation == "Founder" %}
+      {% for posts in post %}
+      <div class="col-md-4">
+        <a class="d-block" href="{% url 'base:project_details'  posts.project.pk %}">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <span class="avatar rounded-circle bg-primary mb-2">
+                <i class="ti ti-calendar-share fs-16"></i>
+              </span>
+              <h3 class="mb-3">{{posts.project.project_name}}</h3>
+              <h6 class="fs-13 fw-medium text-default mb-1">
+                {{posts.project.address}}
+              </h6>
+              <a
+                href="{% url 'base:project_details' posts.project.pk %}"
+                class="link-default"
+                >View</a
+              >
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      {% else %} {% endcomment %}
+      
+      {% for posts in post %}
+      <div class="col-md-4">
+        <a class="d-block" href="{% url 'base:project_details'  posts.pk %}">
+          <div class="card flex-fill">
+            <div class="card-body">
+              
+              <div class="d-flex justify-content-between">
+              <span class="avatar rounded-circle bg-primary mb-2">
+                <i class="ti ti-calendar-share fs-16"></i>
+              </span>
+              {% if posts.photo %}
+              <span class="avatar rounded-circle mb-2">
+                <img src="{{posts.photo.url}}" alt="Img">
+              </span>
+              {% endif %}
+            </div>
+              <h3 class="mb-3">{{posts.project_name}}</h3>
+              <h6 class="fs-13 fw-medium text-default mb-1">
+                {{posts.address}}
+              </h6>
+              <a
+                href="{% url 'base:project_details' posts.pk %}"
+                class="link-default"
+                >View</a
+              >
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      {% comment %} {% endif %} {% endcomment %}
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock content %}

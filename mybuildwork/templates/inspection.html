@@ -1,0 +1,103 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+    	<div class="">
+						<div class="card">
+							<div class="card-body">
+								<div class="border-bottom mb-3 pb-3">
+									<h4>Details</h4>
+								</div>
+								<form method="POST" enctype="multipart/form-data" onsubmit="openLoader()">
+									{% csrf_token %}
+									<div class="border-bottom mb-3">
+										
+										<div class="row">
+											
+											
+											
+											<div class="col-md-5">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Number of Workers</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.no_of_workers  class="form-control" placeholder="Number of Workers"  %}
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Project Status</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.project_work_status  class="form-control" placeholder="Project Status"  %}
+													</div>
+												</div>
+											</div>
+										
+                                            <div class="col-md-3">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Photo</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.image class="form-control image-sign" accept="image/*" capture="user" %}
+													</div>
+												</div>
+											</div>
+                                         
+											
+										</div>
+									</div>
+                                          {% render_field form.lat  id="lat" type="hidden" placeholder="Your Role"  %}
+                                         {% render_field form.lon  id="lon" type="hidden" placeholder="Your Role"  %}
+									<div class="d-flex align-items-center justify-content-end">
+										<button class="btn btn-primary btn-lg" id="btn-submit" type="submit" disabled>
+										<span class="spinner-border spinner-border-sm align-middle" role="status"
+											aria-hidden="true"></span>
+										Loading...
+									</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+  
+</div >
+ <script>
+    // JavaScript code will go here
+ 
+
+    window.onload = function() {
+      if ("geolocation" in navigator) {
+           navigator.geolocation.getCurrentPosition(showGPSLocation, error, getPosition)
+       var getPosition = {
+          enableHighAccuracy: true,
+          timeout: 9000,
+          maximumAge: 0
+        };
+        function error(err) {
+          alert(`ERROR(${err.code}): ${err.message}`);
+        };
+      } else {
+        gonative.android.geoLocation.promptLocationServices()
+      }
+    };
+
+    function showGPSLocation(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude; 
+      
+      document.getElementById("lat").value=latitude   
+      document.getElementById("lon").value=longitude   
+      let btn=document.getElementById("btn-submit")
+      btn.innerHTML="Submit"   
+      btn.innerHTML="Submit"   
+      btn.disabled=false
+
+    }
+  </script>
+{% endblock content %}

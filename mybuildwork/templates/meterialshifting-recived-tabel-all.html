@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Received By</th>
+                  <th>Date </th>
+                  <th>Project</th>
+                  <th>Material Name</th>
+                  <th>Vehicle Type</th>
+                  <th></th>
+                 
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+                  <td><h6 class="fw-medium">{{posts.user.first_name}} {{posts.user.last_name}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.date}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.project.project_name}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.Material_name}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.vehicle}}</h6></td>
+                 
+                  <td>
+                    <div class="action-icon d-inline-flex">
+                      <a href="{% url 'base:material_shifting_received_detail' posts.pk %}" class="me-5"
+                        ><i class="ti ti-eye text-success"></i
+                      ></a>
+                      
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+
+{% endblock content %}

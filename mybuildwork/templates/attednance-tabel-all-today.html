@@ -1,0 +1,103 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+     <div class="card ">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
+                                <h5 class="d-flex align-items-center">Attendance<span class="badge badge-dark-transparent ms-2">Search By Date</span></h5>
+                                <form >
+                                <div class="d-flex align-items-center flex-wrap row-gap-3">
+                                    <div class="input-icon position-relative w-120 me-2">
+                                        <span class="input-icon-addon">
+                                            <i class="ti ti-calendar"></i>
+                                        </span>
+                                        <input type="text" name="date" class="form-control datetimepicker"  formate="YYYY-MM-DD" placeholder="From Date">
+                                    </div>
+                                    
+                                   
+                                    <button class="btn btn-primary">Submit</button>
+                                  </div>
+                                  
+                                </form>
+                              <form>
+                                <button class="btn btn-secondary">Reset</button>
+                              </form>
+                            </div>
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table attdatatable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Date </th>
+                  <th>Name </th>
+                  <th>Phone Number </th>
+                  <th>Punch In </th>
+                  <th>Lunch Start</th>
+                  <th>Lunch End</th>
+                  <th>Punch Out </th>
+                  <th>Total Production</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+                  <td><h6 class="fw-medium">
+                     <a href="{% url 'base:attendance_details' posts.pk %}">
+                    {{posts.date}}</h6></a>
+                  </td>
+                  <td><a href="{% url 'base:admin_profile' posts.user.pk %}"  class="fw-medium text-success">{{posts.user.first_name}} {{posts.user.last_name}}</a></td>
+                  <td><h6 class="fw-medium">{{posts.user.username}}</h6></td>
+                 
+                  <td>
+                    {% if posts.punch_in %}
+                    <h6 class="badge  d-inline-flex align-items-center {% if  posts.punch_in|date:"H:i" <= "09:15"%}badge-success {% else %} badge-danger {% endif %} ">{{posts.punch_in}}</h6>
+                    {% endif %}
+                  </td>
+                  <td>
+                  {% if  posts.lunch_start%}
+                    <h6 class="fw-medium">{{posts.lunch_start}}</h6>
+                    {% endif %}
+                  </td>
+                  <td>
+                  {% if  posts.lunch_end%}
+                    <h6 class="fw-medium">{{posts.lunch_end}}</h6>
+                    {% endif %}
+                  </td>
+                  <td>
+                  {% if  posts.punch_out%}
+                    <h6  class="badge  d-inline-flex align-items-center {% if  posts.punch_out|date:"H:i" <= "18:00"%}badge-danger {% else %} badge-success {% endif %} ">{{posts.punch_out}}</h6>
+                    {% endif  %}
+                  </td>
+                    <td>
+                    {% if posts.formatted_work_duration %} 
+                        <span class="badge  d-inline-flex align-items-center badge-info ">
+                          <i class="ti ti-clock-hour-11 me-1"></i> {{posts.formatted_work_duration}} </span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if posts.formatted_work_duration %}
+
+                            <a href="{% url 'base:attendance_details' posts.pk %}"
+                            ><i class="ti ti-eye text-danger fs-18"></i
+                              ></a>
+                    {% endif %}
+                  </td>
+                 </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+
+{% endblock content %}

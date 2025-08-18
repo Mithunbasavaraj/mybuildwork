@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+
+	<div class="content  ">
+		
+									<div id="primaryBorderFour" class="accordion-collapse collapse show border-top" aria-labelledby="headingFour">
+										<div class="accordion-body">
+											<div class="files-carousel owl-carousel">
+												{% for posts in post %}
+												<div class="card shadow-none mb-3">
+													<div class="card-body">
+														<div class="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom">
+															<div class="d-flex align-items-center">
+															
+																<div>
+																	<h6 class="mb-1">{{posts.name}}</h6>
+																	<span>By {{posts.user.first_name}}</span>
+																</div>
+															</div>
+															<div class="d-flex align-items-center">
+																<a href="{{posts.file.url}}" target="_blank" class="btn btn-lg bg-success btn-icon"><i class="ti ti-download"></i></a>
+															</div>
+														</div>
+														<div class="d-flex align-items-center justify-content-between">
+															<p class="fw-medium mb-0">{{posts.date}}</p>
+															
+														</div>
+													</div>
+												</div>
+												{% endfor %}
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								</div>
+{% endblock content %}

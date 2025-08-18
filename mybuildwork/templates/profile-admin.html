@@ -1,0 +1,176 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+	<div class="content  d-flex justify-content-center">
+					<div class="col-xl-8 d-flex">
+						<div class="card position-relative flex-fill">
+							<div class="card-header bg-dark">
+								
+								<div class="d-flex align-items-center">
+									<span class="avatar avatar-lg avatar-rounded border border-white border-2 flex-shrink-0 me-5">
+										{% if post.image %}
+										<img src="{{post.image.url}}" alt="Img">
+                                        {% else %}
+                                        
+										<img src="{% static "img/user.jpg" %}"  alt="Img">
+                                        {% endif %}
+										<a href="{% url 'base:update_profile_photo' post.user.pk %}" class="position-absolute edit-top top-0 btn btn-icon btn-sm text-white bg-primary rounded-circle "><i class="ti ti-edit"></i></a>
+									</span>
+									
+									<div>
+										<h5 class="text-white mb-1">{{post.user.first_name}} {{post.user.last_name}}</h5>
+										<div class="d-flex align-items-center">
+                                            {% if post.role %}
+                                            <p class="text-white fs-12 mb-0">{{post.role}}</p>
+                                            {% endif %}
+										<span class="mx-1"><i class="ti ti-point-filled text-primary"></i></span>
+										<p class="fs-12">{{post.user.designation}}</p>
+									
+									</div>
+									<a href="{% url 'base:worker_attendance_list' post.user.pk %}" class="btn btn-primary mt-3"> <i class="ti ti-eye"></i> Attendance</a>
+									<a href="{% url 'base:view_salary' post.user.pk %}" class="btn btn-warning mt-3"> <i class="ti ti-eye"></i> Salary</a>
+								
+									</div>
+								</div>
+                                <a href="{% url 'base:admin_update_profile' post.pk post.user.pk %}" class="btn btn-icon btn-sm text-white rounded-circle edit-top"><i class="ti ti-edit"></i></a>
+							</div>
+						
+							<div class="card-body">
+								<div class="mb-2">
+								<a href="{% url 'base:update_pan_photo' post.user.pk %}" class="btn btn-secondary mt-3"> <i class="ti ti-upload"></i> Pan Image</a>
+								<a href="{% url 'base:update_aadhar_photo' post.user.pk %}" class="btn btn-secondary mt-3"> <i class="ti ti-upload"></i> AAdhar Image</a>
+								{% if post.role == "Shop Owner" or post.role == "Supplier" %}
+								<a href="{% url 'base:update_shop_photo' post.user.pk %}" class="btn btn-secondary mt-3"> <i class="ti ti-upload"></i> Shop Image</a>
+								{% endif %}
+							</div>
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">User Name</span>
+									<p class="text-gray-9">{{post.user.username}}</p>
+								</div>
+								{% if post.phone %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Phone Number</span>
+									<p class="text-gray-9">{{post.phone}}</p>
+								</div>
+								{% endif %}{% if post.email%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Email Address</span>
+									<p class="text-gray-9">{{post.email}}</p>
+								</div>
+								{% endif %}{% if post.gender%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Gender </span>
+									<p class="text-gray-9">{{post.gender}}</p>
+								</div>
+								{% endif %}{% if post.occupation%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Occupation </span>
+									<p class="text-gray-9">{{post.occupation}}</p>
+								</div>
+									{% endif %}{% if post.marital_status%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Marital status </span>
+									<p class="text-gray-9">{{post.marital_status}}</p>
+								</div>
+									{% endif %}{% if post.age%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Age </span>
+									<p class="text-gray-9">{{post.age}}</p>
+								</div>
+									{% endif %}{% if post.nationality%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Nationality </span>
+									<p class="text-gray-9">{{post.nationality}}</p>
+								</div>
+									{% endif %}{% if post.state%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">State</span>
+									<p class="text-gray-9">{{post.state}}</p>
+								</div>
+									{% endif %}{% if post.aadhar%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Aadhar Number</span>
+									<p class="text-gray-9">{{post.aadhar}}</p>
+								</div>
+									{% endif %}{% if post.pan%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">PAN Number</span>
+									<p class="text-gray-9">{{post.pan}}</p>
+								</div>
+									{% endif %}{% if post.bank_account%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Number</span>
+									<p class="text-gray-9">{{post.bank_account}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Holder Name</span>
+									<p class="text-gray-9">{{post.bank_account_name}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_bank_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Bank Name</span>
+									<p class="text-gray-9">{{post.bank_account_bank_name}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_branch_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Branch</span>
+									<p class="text-gray-9">{{post.bank_account_branch_name}}</p>
+								</div>
+									{% endif %}{% if post.ifsc_code%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank IFSC Number</span>
+									<p class="text-gray-9">{{post.ifsc_code}}</p>
+								</div>
+									{% endif %}{% if post.address%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Address</span>
+									<p class="text-gray-9">{{post.address}}</p>
+								</div>
+									{% endif %}{% if user.others %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Others</span>
+									<p class="text-gray-9">{{post.others}}</p>
+								</div>
+									{% endif %}{% if user.last_login %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Last Login</span>
+									<p class="text-gray-9">{{user.last_login}} </p>
+								</div>
+									{% endif %}{% if user.date_joined %}
+								<div>
+									<span class="d-block mb-1 fs-13">Joined on</span>
+									<p class="text-gray-9">{{user.date_joined}}</p>
+								</div>
+								{% endif %}
+								<a href="{% url 'base:password_reset' post.user.pk %}" class="btn btn-danger mt-3">Reset Password </a>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					</div>
+					
+					<div class="row content justify-content-center">
+					
+						{% if post.pan_image %}
+						<div class="mb-3 col-xl-4 text-center">
+						<span class="d-block mb-1 fs-16 text-black">Pan Image</span>
+										<img src="{{post.pan_image.url}}" alt="Img" class="img-fluid ">
+									</div>
+									{% endif %}
+									{% if post.aadhar_image %}
+										<div class="mb-3 col-xl-4 text-center">
+									<span class="d-block mb-1 fs-16 text-black">Aadhar Image</span>
+										<img src="{{post.aadhar_image.url}}" alt="Img" class="img-fluid ">
+									</div>		
+									{% endif %}
+									{% if post.shop_image %}
+								<div class="mb-3 col-xl-4 text-center">
+									<span class="d-block mb-1 fs-16 text-black">Shop Image</span>
+										<img src="{{post.shop_image.url}}" alt="Img" class="img-fluid ">
+									</div>
+									{% endif %}
+								
+								</div>
+								
+{% endblock content %}

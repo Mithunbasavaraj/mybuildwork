@@ -1,0 +1,84 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+    <!-- Recent Activities -->
+	 <div class="row">
+					<div class="col-xxl-4 col-xl-6 d-flex">
+						<div class="card flex-fill">
+							<div class="card-header pb-2 d-flex align-items-center justify-content-between flex-wrap">
+								<h5 class="mb-2"> Details</h5>
+								
+							</div>
+							<div class="card-body">
+								<div class="recent-item">
+									<div class="d-flex justify-content-between">
+										<div class="d-flex align-items-center w-100">
+											
+											<div class="ms-2 flex-fill">
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Date</a></h6>
+													<p class="fs-16 text-dark">{{post.date}}</p>
+												</div>
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Project</a></h6>
+													<p class="fs-16 text-dark">{{post.project.project_name}}</p>
+												</div>
+												
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Vehicle</a></h6>
+													<p class="fs-16 text-dark">{{post.vehicle}}</p>
+												</div>
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Material</a></h6>
+													<p class="fs-16 text-dark">{{post.Material_name}}</p>
+												</div>
+											
+												<div class="d-flex align-items-center justify-content-between">
+													<h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Added By</a></h6>
+													<p class="fs-16 text-dark">{{post.user.first_name}} {{post.user.last_name}}</p>
+												</div>
+												
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-xxl-4 col-xl-6 d-flex">
+						{% if post.image %}
+						<img src="{{post.image.url}}" class="img-fluid" alt="Img">
+						{% endif %}
+					</div>
+				
+					</div>
+					<!-- /Recent Activities -->
+<div id="map" style="height: 480px"></div>
+</div >
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+   var latitude = {{post.lat}}
+   var longitude = {{post.lon}}
+
+      var map = L.map("map").setView([latitude, longitude], 16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+
+      var marker = L.marker([latitude, longitude], {
+          alt: "MEE"
+        })
+        .addTo(map)
+        .bindPopup(
+          '<a style="color:red; text-decoration: none;  font-size:18px; font-weight: 700;" href="">{{post.user.first_name}} {{post.user.last_name}}</a>'
+        );
+    
+  </script>
+
+{% endblock content %}

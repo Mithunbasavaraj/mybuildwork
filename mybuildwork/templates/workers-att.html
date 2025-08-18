@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+ 
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Name </th>
+                  <th>User Name </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+                  <td><a href="{% url 'base:worker_attendance_list' posts.pk %}"  class="fw-medium text-success">{{posts.first_name}} {{posts.last_name}}</a></td>
+                  <td><h6 class="fw-medium">{{posts.username}}</h6></td>
+                
+                  <td>
+                 
+
+                            <a href="{% url 'base:worker_attendance_list' posts.pk %}"
+                            ><i class="ti ti-eye text-danger fs-18"></i
+                              ></a>
+                   
+                  </td>
+                 </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+
+{% endblock content %}

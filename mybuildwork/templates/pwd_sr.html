@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+    <div class="card-body p-0">
+								<div class="table-responsive">	
+									<table class="table table-nowrap mb-0">
+										<thead>
+											<tr>
+												<th>Date</th>
+												<th>Name</th>
+												<th>Download</th>
+                                                {% if user.is_superuser %}
+												<th>Edit</th>
+												<th>Delete</th>
+                                                {% endif %}
+											</tr>
+										</thead>
+										<tbody>
+                                            {% for posts in post  %}
+											<tr>
+												<td><a href="{{posts.file.url}}" target="_blank" class="link-default">{{posts.date}}</a></td>
+												<td><h6 class="fw-medium"><a href="{{posts.file.url}}" target="_blank">{{posts.name}}</a></h6></td>
+												<td>
+													<a href="{{posts.file.url}}" target="_blank" class="badge badge-success d-inline-flex align-items-center badge-xs">
+														<i class="ti ti-download me-1"></i>Download
+													</a>
+												</td>
+												{% if user.is_superuser %}
+												<td><a href="{% url 'base:pwd_sr_edit' posts.pk %}"><i class="fa fa-pencil"></i></a></td>
+												<td><a href="{% url 'base:pwd_sr_delete' posts.pk %}"><i class="fa fa-trash"></i></a></td>
+                                                {% endif %}
+												
+											</tr>
+                                            {% endfor %}
+										
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Projects -->   
+</div >
+
+{% endblock content %}

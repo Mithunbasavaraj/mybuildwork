@@ -1,0 +1,212 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+<div class="content">
+  <div class="">
+    <form name="form1" action="" >
+        <div class="card">
+          <div class="card-body">
+            <div class="border-bottom mb-3 pb-3">
+              <h4>Scaling Calculator</h4>
+            </div>
+            
+            
+            <div class="border-bottom mb-3">
+                  <h3>Original size:</h3>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">Height</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input  name="a" placeholder="Height" class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">Width</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input  name="b" placeholder="Width"  class="form-control"/>
+                      </div>
+                    </div>
+                  </div>                                    
+                  
+                </div>
+              </div>
+                                     
+            
+         
+          <div class="border-bottom mb-3">
+            <h3>Reproduction size:
+            </h3>
+            <div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row align-items-center mb-3">
+                <div class="col-md-4">
+                  <label class="form-label mb-md-0">Height</label>
+                </div>
+                <div class="col-md-8">
+                  <input  name="c" placeholder="Height" class="form-control"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row align-items-center mb-3">
+                <div class="col-md-4">
+                  <label class="form-label mb-md-0">Width</label>
+                </div>
+                <div class="col-md-8">
+                  <input  name="d" placeholder="Width"  class="form-control"/>
+                </div>
+              </div>
+            </div>     
+            <div class="col-md-12">
+                <div class="row align-items-center mb-3">
+                    <h3 class="mb-md-2">Percentage of Scaling: 
+
+                    </h3>
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md-8">
+                    <input  name="p" placeholder="Percentage of Scaling: "  class="form-control"/>
+                  </div>
+                </div>
+              </div> 
+              
+              <input type="button" class="btn btn-primary col-md-6 my-3" value="Calculate New Dimensions" onclick="proport()" title="Calculate!">
+            
+          </div>
+          </div>
+
+
+        </div>
+                               
+    </form>
+    </div>
+        </div>
+      </div>
+
+</div >
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function proport(){
+        a=document.form1.a.value;
+        b=document.form1.b.value;
+        c=document.form1.c.value;
+        d=document.form1.d.value;
+        p=document.form1.p.value;
+        if((isNaN(c)||c=="")&&(isNaN(d)||d==""))
+            {
+            c=(p/100)*a;
+            document.form1.c.value=c;
+            d=(p/100)*b;
+            document.form1.d.value=d;
+            }
+        if((isNaN(a)||a=="")&&(isNaN(b)||b==""))
+            {
+            a=c/(p/100);
+            document.form1.a.value=a;
+            b=d/(p/100);
+            document.form1.b.value=b;
+            }
+        if(isNaN(a)||a=="")
+            {
+            answer=(c*b)/d;
+            answer=answer*1000;
+            answer=Math.round(answer)
+            answer=answer/1000
+            document.form1.a.value=answer;
+            document.form1.c.value=c;
+            document.form1.d.value=d;
+            n=(d/b)*100000
+            n=Math.round(n)
+            n=n/1000
+            document.form1.p.value=n
+            }
+        if(isNaN(b)||b=="")
+            {
+            answer=(a*d)/c;
+            answer=answer*1000;
+            answer=Math.round(answer)
+            answer=answer/1000
+            document.form1.b.value=answer;
+            document.form1.c.value=c;
+            document.form1.d.value=d;
+            n=(c/a)*100000
+            n=Math.round(n)
+            n=n/1000
+            document.form1.p.value=n
+            }
+        if(isNaN(c)||c=="")
+            {
+            answer=(a*d)/b;
+            answer=answer*1000;
+            answer=Math.round(answer)
+            answer=answer/1000
+            document.form1.c.value=answer;
+            n=(d/b)*100000
+            n=Math.round(n)
+            n=n/1000
+            document.form1.p.value=n
+            document.form1.d.value=d;
+            }
+        if(isNaN(d)||d=="")
+            {
+            answer=(b*c)/a;
+            answer=answer*1000;
+            answer=Math.round(answer)
+            answer=answer/1000
+            document.form1.d.value=answer;
+            document.form1.c.value=c;
+            n=(c/a)*100000
+            n=Math.round(n)
+            n=n/1000
+            document.form1.p.value=n
+            }
+        if((a>0)&&(b>0)&&(c>0)&&(d>0))
+            {
+            x=c/a
+            y=d/b
+            if(x==y)
+                {
+                n=(c/a)*100000
+                n=Math.round(n)
+                n=n/1000
+                document.form1.p.value=n
+                }
+            else
+                {
+                document.form1.p.value="not equal"
+                }
+            }
+        }
+        function dpiport(){
+        a=document.form2.a.value;
+        b=document.form2.b.value;
+        c=document.form2.c.value;
+        d=100/b
+        c=d*a
+        document.form2.c.value=c
+        }
+</script>
+
+
+{% endblock content %}
+

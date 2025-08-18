@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+ 
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Name </th>
+                  <th>Project </th>
+                  <th>Designation</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+                  <td><a href="{% url 'base:admin_profile' posts.pk %}"  class="fw-medium text-success">{{posts.user.first_name}} {{posts.user.last_name}}</a></td>
+                  <td><h6 class="fw-medium">{{posts.project.project_name}}</h6></td>
+                  <td>
+                    <h6 class="fw-medium">{{posts.user.designation}}</h6></td>
+                    <td>
+                 
+
+                            <a href="{% url 'base:delete_investor' posts.pk %}"
+                            ><i class="ti ti-trash text-danger fs-18"></i
+                              ></a>
+                   
+                  </td>
+                 </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+
+{% endblock content %}

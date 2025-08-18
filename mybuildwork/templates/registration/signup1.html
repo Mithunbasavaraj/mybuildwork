@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content d-flex justify-content-center ">
+    <div class="col-xl-6 ">
+						<div class="card">
+							<div class="card-header justify-content-between">
+								<div class="card-title">
+									Create User
+								</div>
+							</div>
+                            <form method="POST">
+                             {% csrf_token %}
+							<div class="card-body">
+								<div class="form-floating mb-3">
+                                    {% render_field form.username     class="form-control" id="floatingInput" placeholder="Phone Number" %}
+									<label for="floatingInput">User Name</label>
+								</div>
+                                <div class="form-floating mb-3">
+                                    {% render_field form.first_name     class="form-control" id="floatingInput" placeholder="First Name" %}
+									<label for="floatingInput">First Name</label>
+								</div><div class="form-floating mb-3">
+                                    {% render_field form.last_name     class="form-control" id="floatingInput" placeholder="Last Name" %}
+									<label for="floatingInput">Last Name</label>
+								</div>
+							
+
+								<div class= "form-floating mb-3">
+                                            {% render_field form.password1  type="text" placeholder="Password"  class="form-control" id="floatingInput" required="true" %}
+											<label for="floatingInput">Password</label>
+										</div>
+
+									<div class="pass-group form-floating">
+                                            {% render_field form.password2 placeholder="ConformPassword"    class="pass-input form-control" id="floatingInput" required="true" %}
+											<span class="ti toggle-password ti-eye-off"></span>
+											<label for="floatingInput">Conform Password</label>
+										</div>
+								
+								<div class="text-end mt-4">
+                                
+                                <button type="submit" class="btn btn-primary w-50">submit</button>
+                            </div>
+							</div>
+                            </form>
+						</div>
+					</div>
+					</div>
+
+{% endblock content %}

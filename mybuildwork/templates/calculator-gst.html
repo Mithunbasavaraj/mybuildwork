@@ -1,0 +1,167 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+<div class="content">
+  <div class="">
+        <div class="card">
+          <div class="card-body">
+            <div class="border-bottom mb-3 pb-3">
+              <h4>GST</h4>
+            </div>
+         
+              <div class="border-bottom mb-3">
+                
+                <div class="row">
+                  
+                  
+                  
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">Price With out GST</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="number" id="actual_price" placeholder="Price With Out GST" class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">Price With GST</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="number" id="final_price" placeholder="Price With GST"  class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">GST</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="number" id="gst_value" placeholder="GST" disabled class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">CGST</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="number" id="cgst_value" placeholder="CGST" disabled class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-md-4">
+                        <label class="form-label mb-md-0">SGST</label>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="number" id="sgst_value" placeholder="SGST" class="form-control" disabled/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row align-items-center justify-content-md-end mb-3">
+                      <div class="col-2">
+                        <button id="left" class="btn btn-primary btn-lg"><</button>
+                      </div>
+                      <div class="col-2 "> 
+                        <div class="group ">
+                        <h3 class="d-inline" id="gst_percent" >3</h3>
+                        <h3 class="d-inline">%</h3>
+                      </div>
+                      </div>
+                      <div class="col-2">
+                        <button id="right" class="btn btn-primary btn-lg">></button>
+                      </div>
+                    </div>
+                  </div>
+
+                                     
+                  
+                </div>
+              </div>
+                                     
+            
+          </div>
+        </div>
+      </div>
+
+</div >
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    let mode;
+    const gst_arr = [3, 5, 12, 18, 28];
+    
+    
+    const findGST = () => {
+        const _ = n => (n % 1 === 0 ? n : n.toFixed(2));
+      const actual_value = parseFloat(document.querySelector("#actual_price").value);
+      const final_value = parseFloat(document.querySelector("#final_price").value);
+      const gst = parseFloat(document.querySelector("#gst_percent").innerText);
+    
+      if (mode === 1) {
+        let gst_value = (actual_value * gst) / 100;
+        document.querySelector("#gst_value").value = _(gst_value);
+        document.querySelector("#cgst_value").value = _(gst_value / 2);
+        document.querySelector("#sgst_value").value = _(gst_value / 2);
+        document.querySelector("#final_price").value = _(actual_value + gst_value);
+      } else if (mode === 2) {
+        let actual_price = (final_value * 100) / (100 + gst);
+        let gst_value = (actual_price * gst) / 100;
+        document.querySelector("#actual_price").value = _(actual_price);
+        document.querySelector("#gst_value").value = _(gst_value);
+        document.querySelector("#cgst_value").value = _(gst_value / 2);
+        document.querySelector("#sgst_value").value = _(gst_value / 2);
+      }
+    };
+    
+    document.querySelector("#actual_price").addEventListener("keyup", () => {
+      mode = 1;
+      findGST();
+    });
+    
+    document.querySelector("#final_price").addEventListener("keyup", () => {
+      mode = 2;
+      findGST();
+    });
+    
+    document.querySelector("#right").addEventListener("click", () => {
+      let gst_percent = parseInt(document.querySelector("#gst_percent").innerText);
+      let index = gst_arr.indexOf(gst_percent);
+      if (index === gst_arr.length - 1) index = 0;
+      else index++;
+    
+      document.querySelector("#gst_percent").innerText = gst_arr[index];
+      findGST();
+    });
+    
+    document.querySelector("#left").addEventListener("click", () => {
+      let gst_percent = parseInt(document.querySelector("#gst_percent").innerText);
+      let index = gst_arr.indexOf(gst_percent);
+      if (index === 0) index = gst_arr.length - 1;
+      else index--;
+    
+      document.querySelector("#gst_percent").innerText = gst_arr[index];
+      findGST();
+    });
+</script>
+
+
+{% endblock content %}
+

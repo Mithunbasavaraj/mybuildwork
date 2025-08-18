@@ -1,0 +1,99 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+       <!-- Pricing -->
+       <div class="card">
+        <div class="card-body pb-1">
+        <div class="text-center mb-5">
+            <h2 class="btn btn-info btn-lg">Yearly Billing</h2>
+        </div>
+            <div class="row justify-content-center">
+                {% for posts in post %}
+                {% if posts.years %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>{{posts.name}}</h4>
+                                    {% if posts.years %}
+                                  
+                                    <h1>Rs {{posts.price_yearly}}<span class="fs-14 fw-normal text-gray">/Year</span></h1>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="pricing-content rounded bg-light mb-3">
+                                <div class="price-hdr">
+                                    <h6 class="fs-14 fw-medium text-gray w-100">Features Includes</h6>
+                                </div>
+                                <div>
+                                    <span class="text-dark d-flex align-items-center mb-3"><i class="ti ti-discount-check-filled text-success me-2"></i>{{posts.user_limit}} Users</span>
+                                    {% if posts.years %}
+                                    <span class="text-dark d-flex align-items-center mb-3"><i class="ti ti-discount-check-filled text-success me-2"></i>1 Month Extra At free of Cost</span>
+                                    {% endif %}
+                                   
+                                </div>
+                            </div>
+                            <a href="{% url 'base:pay' posts.pk  %}" class="btn btn-dark w-100">Buy Plan</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+               
+            </div>
+        </div>
+    </div>
+    <!-- /Pricing -->
+         <!-- Pricing -->
+				<div class="card">
+                    <div class="card-body pb-1">
+                    <div class="text-center mb-5">
+                        <h2 class="btn btn-info btn-lg">Monthly Billing</h2>
+                    </div>
+                        <div class="row justify-content-center">
+                            {% for posts in post %}
+                            {% if posts.month %}
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4>{{posts.name}}</h4>
+                                                {% if posts.month %}
+                                                <h1>Rs {{posts.price_monthly}}<span class="fs-14 fw-normal text-gray">/Month</span></h1>
+                                                
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="pricing-content rounded bg-light mb-3">
+                                            <div class="price-hdr">
+                                                <h6 class="fs-14 fw-medium text-gray w-100">Features Includes</h6>
+                                            </div>
+                                            <div>
+                                                <span class="text-dark d-flex align-items-center mb-3"><i class="ti ti-discount-check-filled text-success me-2"></i>{{posts.user_limit}} Users</span>
+                                                {% if posts.years %}
+                                                <span class="text-dark d-flex align-items-center mb-3"><i class="ti ti-discount-check-filled text-success me-2"></i>1 Month Extra At free of Cost</span>
+                                                {% endif %}
+                                               
+                                            </div>
+                                        </div>
+                                        <a href="{% url 'base:pay' posts.pk  %}" class="btn btn-dark w-100">Buy Plan</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- /Pricing -->
+
+              
+
+</div >
+
+{% endblock content %}

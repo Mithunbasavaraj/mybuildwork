@@ -1,0 +1,199 @@
+    {% load static %}
+    {% load widget_tweaks %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sl Constructions</title>
+
+	<meta name="description" content="Sl Constructions.">
+	<meta name="keywords" content="Sl Constructions">
+
+
+
+	<!-- Favicon -->
+	<link rel="icon" href="{% static "img/favicon/favicon.ico" %}"  >
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static "img/favicon/apple-touch-icon.png" %}" >
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static "img/favicon/favicon-32x32.png" %}" >
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static "img/favicon/favicon-16x16.png" %}" >
+	<link rel="manifest" href="{% static "img/favicon/site.webmanifest"  %}">
+
+	
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+
+	<!-- Feather CSS -->
+	<link rel="stylesheet" href="{% static "plugins/icons/feather/feather.css" %}">
+
+	<!-- Tabler Icon CSS -->
+	<link rel="stylesheet" href="{% static "plugins/tabler-icons/tabler-icons.css" %}">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="{% static "plugins/select2/css/select2.min.css" %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static "plugins/fontawesome/css/fontawesome.min.css" %}">
+	<link rel="stylesheet" href="{% static "plugins/fontawesome/css/all.min.css" %}">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="{% static "css/bootstrap-datetimepicker.min.css" %}">
+
+	<!-- Bootstrap Tagsinput CSS -->
+	<link rel="stylesheet" href="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" %}">
+
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="{% static "plugins/summernote/summernote-lite.min.css" %}">
+
+	<!-- Daterangepikcer CSS -->
+	<link rel="stylesheet" href="{% static "plugins/daterangepicker/daterangepicker.css" %}">
+
+	<!-- Color Picker Css -->
+	<link rel="stylesheet" href="{% static "plugins/flatpickr/flatpickr.min.css" %}">
+	<link rel="stylesheet" href="{% static "plugins/%40simonwep/pickr/themes/nano.min.css" %}">
+	<!-- Datatable CSS -->
+	<link rel="stylesheet" href="{% static "css/dataTables.bootstrap5.min.css" %}">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static "css/style.css" %}">
+
+</head>
+
+<body class="bg-linear-gradiant">
+
+	<div id="global-loader" style="display: none;">
+		<div class="page-loader"></div>
+	</div>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+		<div class="container-fuild">
+			<div class="w-100 overflow-hidden position-relative flex-wrap d-block vh-100">
+				<div class="row justify-content-center align-items-center vh-100 overflow-auto flex-wrap ">
+					<div class="col-md-4 mx-auto vh-100">
+						<form method="POST" class="vh-100">
+                             {% csrf_token %}
+							<div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
+								<div class=" mx-auto mb-0 text-center">
+									<img src="{% static "img/logo.png" %}"
+										class="img-fluid w-25" alt="Logo">
+								</div>
+								<div class="">
+									<div class="text-center mb-3">
+										<h2 class="mb-2">Sign In</h2>
+										<p class="mb-0">Please enter your details to sign in</p>
+									</div>
+									<div class="mb-3">
+										<label class="form-label">User Name</label>
+										<div class="input-group">
+                                            {% render_field form.username  placeholder="Enter User Name"  class="form-control border-end-0" required="true" %}
+											<span class="input-group-text border-start-0">
+												<i class="ti ti-phone"></i>
+											</span>
+										</div>
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Password</label>
+										<div class="pass-group">
+                                            {% render_field form.password placeholder="Enter Password"   class="pass-input form-control" required="true" %}
+											<span class="ti toggle-password ti-eye-off"></span>
+										</div>
+									</div>
+									{% if form.non_field_errors %}
+									<div>
+									  <span class="text-danger "> {{ form.non_field_errors.as_text  }}</span>
+									</div>
+									{% endif %}
+									<div class="d-flex align-items-center justify-content-between mb-3">
+										<div class="d-flex align-items-center">
+											<div class="form-check form-check-md mb-0">
+												<input class="form-check-input" id="remember_me" type="checkbox">
+												<label for="remember_me" class="form-check-label mt-0">Remember Me</label>
+											</div>
+										</div>
+										
+									</div>
+
+									<div class="mb-3">
+										<button class="btn btn-primary w-100">Sign In</button>
+									</div>
+									<div class="text-center">
+										<h6 class="fw-normal text-dark mb-0">Don't have an account?
+											<a href="{% url 'base:register' %}" class="hover-a">  Register </a>
+										</h6>
+									</div>
+									
+								</div>
+								<div class="mt-5 pb-4 text-center">
+									
+                                    <p>Designed &amp; Developed By <a href="https://hashtocolon.com/" class="text-primary">HashtoColon Systems Pvt.Ltd.</a></p>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Main Wrapper -->
+
+
+	
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+
+	<!-- Bootstrap Core JS -->
+	<script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static "js/feather.min.js" %}"></script>
+
+	<!-- Slimscroll JS -->
+	<script src="{% static "js/jquery.slimscroll.min.js" %}"></script>
+
+	<!-- Chart JS -->
+	<script src="{% static "plugins/apexchart/apexcharts.min.js" %}"></script>
+	<script src="{% static "plugins/apexchart/chart-data.js" %}"></script>
+
+	<!-- Chart JS -->
+	<script src="{% static "plugins/chartjs/chart.min.js" %}"></script>
+	<script src="{% static "plugins/chartjs/chart-data.js" %}"></script>
+
+	<!-- Datetimepicker JS -->
+	<script src="{% static "js/moment.js" %}"></script>
+	<script src="{% static "js/bootstrap-datetimepicker.min.js" %}"></script>
+
+	<!-- Daterangepikcer JS -->
+	<script src="{% static "plugins/daterangepicker/daterangepicker.js" %}"></script>
+
+	<!-- Summernote JS -->
+	<script src="{% static "plugins/summernote/summernote-lite.min.js" %}"></script>
+
+	<!-- Bootstrap Tagsinput JS -->
+	<script src="{% static "plugins/bootstrap-tagsinput/bootstrap-tagsinput.js" %}"></script>
+
+	<!-- Select2 JS -->
+	<script src="{% static "plugins/select2/js/select2.min.js" %}"></script>
+
+	<!-- Color Picker JS -->
+	<script src="{% static "plugins/%40simonwep/pickr/pickr.es5.min.js" %}"></script>
+
+	<!-- Datatable JS -->
+	<script src="{% static "js/jquery.dataTables.min.js" %}"></script>
+	<script src="{% static "js/dataTables.bootstrap5.min.js" %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static "js/todo.js" %}"></script>
+	<!-- <script src="{% static "js/theme-colorpicker.js" %}"></script> -->
+	<script src="{% static "js/script.js" %}"></script>
+
+</body>
+
+
+</html>

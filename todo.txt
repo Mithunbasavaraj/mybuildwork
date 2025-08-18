@@ -1,0 +1,368 @@
+map size 
+Name Company or shop
+ Save GST number
+ Phone number
+ Full address
+ company 
+        gst
+        phone number
+        address 
+package
+payment
+crop photos
+image
+pan_image
+aadhar_image
+shop_image
+profile images
+Inspection
+all materials
+remove received add from material shifting
+currency converter
+photos crop
+Third Party Inspection and verification of Quality Control Reports Engineers
+PWD SR
+        pwd rates pdf
+project details
+project status
+project progress photos status
+project cost
+expenses
+Machinery
+        Jcb, Hitachi & Tipper, Tractor
+salary payment details 
+        
+ Weekly salary 7 Days × 800 =5600.00
+ Monthly salary calculate and pay
+-----------
+
+----------------------------
+
+ 
+
+
+
+
+material shifting
+   two way material shifting
+   parcel
+
+
+++++++++++++++++++++++++++++
+        complaints
+        feedback
+
+Leave letter
+
+
+Material Suppler order for shop
+        user will order the supplier materials
+        writer details for supplier
+        material order
+                status
+
+chatting
+
+Loans
+Insurance
+Credit Card
+
+Bill Generate
+
+project bills and supply bills to auditors
+ cA auditors/accountant
+
+
+new projects plans and 3d plan
+new design creating enquiry
+
+buy sell vehicles
+rent/lease equipments and vehicles
+
+#new vehicles
+
+
+
+
+
+
+
+
+
+------------
+ Confirm Payment approval owner sent to accountant  then payment to workers.
+
+ Weekly salary 7 Days × 800 =5600.00
+ Monthly salary calculate and pay
+
+
+Material stock Ledgers
+
+Purchase Orders
+
+Credit Notes,  Payment,  Balance Payment
+Payment Receipts
+
+Delivery Challans
+Create GST invoice
+
+Duplicate
+Open PDF
+Print PDF
+Share PDF
+Save PDF to Phone
+Open Delivery Challan
+Print Delivery Challan
+Share Delivery Challan
+Received customer
+Send SMS
+Total Amount
+Balance Due
+Cancel Invoice
+---------
+
+
+
+
+
+
+*******************
+How to Execute Work
+
+Show all worker
+
+ Work Plan photocopy 
+ Writing send
+Material Shifting Received details
+
+ Project details Send
+Work Estimate Copy Send Photocopy Send
+Writing Send
+
+          Inspection 
+         Attendance
+        Documents upload
+        Photocopy
+        Writing
+CA Auditor 
+
+ Sending  Bill 
+Writing Send
+
+Bill Receive
+Shop Bill receive
+Writing Send (typing option)
+Writing Typing option  send  detail
+Vehicle photo and item photos
+crop and rotate all images and bill copie
+Add accountant 
+Add CA  Auditor
+Add Client
+
+Project show.
+
+Project progress photos.
+
+Building plan
+
+ Worker attendance 
+
+ Material received
+
+ Material stock
+
+Writing Typing option  send  detail
+Add Temporary worker
+
+ Attendance
+...........
+........
+Inbuilt Calcutta
+Add Contact details 
+All Vendor database
+
+ Nature of material supply
+ 
+ Name Company or shop
+
+ Save GST number
+ Phone number
+ Full address
+
+
+
+
+Add Contact details 
+Work Force Details
+
+ Nature of work   ( typing option save )
+
+ Worker name
+ Add  phone number 
+ Worker full  address
+
+
+Material order
+Material supplier order received
+ Material supplier
+ Vehicle movement
+ Lord vehicle received
+ Unload vehicles return
+ Photo and bill copy upload and writing
+.........
+GST Calculator
+scale Calculator
+Cancelled Cheque/Bank Statement
+PAN Card (both required): Business PAN card & Authorized Signatory PAN card
+GST Certificate/Provisional Number
+Partner's Resolution (Karta/Deeds/Board Resolution/COI/MOA)
+PWD SR
+
+ Upload save
+
+
+Jcb, Hitachi & Tipper, Tractor
+
+ Typing what work 
+
+ Work starting time.
+ Break time.
+ Work complete time.
+ How many hour work.
+
+ Typing option communication
+
+ Project (Site) Work progress photos upload
+
+Photo and bill copy upload and writing
+........
+....
+
+.............
+Asphalt material supplier
+ Material order
+Material supplier order received
+ Material supplier
+ Vehicle movement
+ Lord vehicle received
+ Unload vehicles return
+ Photo and bill copy upload and writing
+.................
+RMC concrete material supplier
+ Material order
+Material supplier order received
+ Material supplier
+ Vehicle movement
+ Lord vehicle received
+ Unload vehicles return
+ Photo and bill copy upload and writing
+...........
+All supplier to same
+
+
+*************
+Worker send the leave letter( typing option letter photocopy upload)
+
+
+ Worker take leave permission granted( typing option photocopy upload)
+
+
+
+ Worker attendance
+ Check owner or supervisor or accountant.
+
+
+ Confirm Payment approval owner sent to accountant  then payment to workers.
+
+ Weekly salary 7 Days × 800 =5600.00
+ Monthly salary calculate and pay
+
+
+Material stock Ledgers
+
+Purchase Orders
+
+Credit Notes,  Payment,  Balance Payment
+Payment Receipts
+
+Delivery Challans
+Create GST invoice
+
+Duplicate
+Open PDF
+Print PDF
+Share PDF
+Save PDF to Phone
+Open Delivery Challan
+Print Delivery Challan
+Share Delivery Challan
+Received customer
+Send SMS
+Total Amount
+Balance Due
+Cancel Invoice
+
+
+
+
+
+
+
+
+
+
+
+********
+5 people     99 Premium
+10people   149 Premium
+15 people   199 Premium
+
+25 people    299 Classic
+50 people    499  Classic
+75people      999  Classic
+
+100people   1499 Silver
+125 people   1999 Silver
+150 people    2999 Silver
+
+175  people   3999 Gold
+200 people    4999 Gold
+250 people    5999 Gold
+
+275  people   6999 Diamond
+300 people    7999 Diamond
+350 people    8999 Diamond
+
+400  people   9999  Platinum
+450 people    10999 Platinum
+500 people    11999 Platinum
+
+
+
+
+
+
+
+
+
+************.....
+In Project on site camera live show multi camera
+ 8 channel
+ 15 channel 
+32 channel
+
+All Company list 
+install in my app
+
+Hikvision.
+Honeywell Commercial Security.
+Aditya Infotech Ltd. (CP Plus)
+Videocon Industries Limited.
+Zicom Electronic Security Systems.
+Dahua Technology India Pvt. Ltd.
+D-Link India Limited.
+Godrej Security Solution.
+ and other company
+In Project 
+ Uploading correct location
+( Vendor and shop, factory, distributor anyone know the location vehicle movement and other people)

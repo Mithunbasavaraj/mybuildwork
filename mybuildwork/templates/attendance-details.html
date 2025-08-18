@@ -1,0 +1,215 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+           <div class="row justify-content-center">
+    <div class="col-xl-3 d-flex">
+      <div class="card flex-fill border-primary attendance-bg">
+        <div class="card-body">
+          <div class="mb-4 text-center">
+            <h6 class="fw-medium text-gray-5 mb-1">{{post.user.first_name}} {{post.user.last_name}} Attendance</h6>
+            <h4>{{post.date}}</h4>
+          </div>
+        
+          <div class="text-center">
+            {% if post.formatted_work_duration %}
+            <div class="badge badge-dark badge-md mb-3">
+              Production : {{post.formatted_work_duration}}
+            </div>
+            {% endif %}
+
+            {% if post.punch_in %}
+            <h6
+            class="fw-medium d-flex align-items-center justify-content-center mb-4"
+            >
+            <i class="ti ti-fingerprint text-primary me-1"></i>
+            Punch In at {{post.punch_in}}
+          </h6>
+          {% endif %}
+          {% if post.lunch_start %}
+            <h6
+            class="fw-medium d-flex align-items-center justify-content-center mb-4"
+            >
+            <i class="ti ti-fingerprint text-primary me-1"></i>
+            Lunch Start at {{post.lunch_start}}
+          </h6>
+          {% endif %}
+          {% if post.lunch_end %}
+            <h6
+            class="fw-medium d-flex align-items-center justify-content-center mb-4"
+            >
+            <i class="ti ti-fingerprint text-primary me-1"></i>
+            Lunch End at {{post.lunch_end}}
+          </h6>
+          {% endif %}
+          {% if post.punch_out %}
+            <h6
+            class="fw-medium d-flex align-items-center justify-content-center mb-4"
+            >
+            <i class="ti ti-fingerprint text-primary me-1"></i>
+            Punch out at {{post.punch_out}}
+          </h6>
+          {% endif %}
+
+       
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<div class="col-xl-12 row">
+
+<div class="col-xl-3">
+    <div class="border-bottom text-center ">
+   <h4>Punch In Photo</h4>
+   <h3>{{post.project.project_name}}</h3>
+	</div>
+ {% if post.punch_in_photo %}
+<img src="{{post.punch_in_photo.url}}" class="img-fluid" alt="Img">
+{% endif %}
+<div class="">
+  <div class="border-bottom py-3 text-center ">
+ <h4>Punch In Location</h4>
+</div>
+  <div id="map" style="height: 210px" ></div>
+</div >
+</div >
+<div class="col-xl-3">
+    <div class="border-bottom text-center ">
+   <h4>Lunch Start Photo</h4>
+   <h3>{{post.project_lunch_start.project_name}}</h3>
+	</div>
+ {% if post.lunch_in_photo %}
+<img src="{{post.lunch_in_photo.url}}" class="img-fluid" alt="Img">
+{% endif %}
+<div class="">
+  <div class="border-bottom py-3 text-center ">
+ <h4>Lunch Start Location</h4>
+</div>
+  <div id="map2" style="height: 210px" ></div>
+</div >
+</div >
+<div class="col-xl-3">
+    <div class="border-bottom text-center ">
+   <h4>Lunch End Photo</h4>
+   <h3>{{post.project_lunch_end.project_name}}</h3>
+	</div>
+ {% if post.lunch_out_photo %}
+<img src="{{post.lunch_out_photo.url}}" class="img-fluid" alt="Img">
+{% endif %}
+<div class="">
+  <div class="border-bottom py-3 text-center ">
+ <h4>Lunch End Location</h4>
+</div>
+  <div id="map3" style="height: 210px" ></div>
+</div >
+</div >
+<div class="col-xl-3">
+    <div class="border-bottom text-center ">
+   <h4>Punch Out Photo</h4>
+   <h3>{{post.project_punch_out.project_name}}</h3>
+	</div>
+ {% if post.punch_out_photo %}
+<img src="{{post.punch_out_photo.url}}" class="img-fluid" alt="Img">
+{% endif %}
+<div class="">
+  <div class="border-bottom py-3 text-center ">
+ <h4>Punch out Location</h4>
+</div>
+  <div id="map4" style="height: 210px" ></div>
+</div >
+</div >
+
+</div >
+</div >
+<div class="row" >
+
+
+
+
+
+
+
+
+
+
+</div >
+
+</div >
+
+
+
+
+</div >
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+        {% if  post.punch_in_lat %}
+   var punch_in_lat = {{post.punch_in_lat}}
+   var punch_in_lon = {{post.punch_in_lon}}
+      var map = L.map("map").setView([punch_in_lat, punch_in_lon], 16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+      var marker = L.marker([punch_in_lat, punch_in_lon], {
+          alt: "MEE"
+        })
+        .addTo(map)
+        .bindPopup(
+          '<a style="color:red; text-decoration: none;  font-size:18px; font-weight: 700;" href="">{{post.user.first_name}} {{post.user.last_name}}</a>'
+        );
+{% endif %}
+        {% if  post.lunch_start_lat %}
+        var lunch_start_lat = {{post.lunch_start_lat}}
+       var lunch_start_lon = {{post.lunch_start_lon}}
+      var map = L.map("map2").setView([lunch_start_lat, lunch_start_lon], 16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+      var marker = L.marker([lunch_start_lat, lunch_start_lon], {
+          alt: "MEE"
+        })
+        .addTo(map)
+        .bindPopup(
+          '<a style="color:red; text-decoration: none;  font-size:18px; font-weight: 700;" href="">{{post.user.first_name}} {{post.user.last_name}}</a>'
+        );
+{% endif %}
+        {% if  post.lunch_end_lat %}
+        var lunch_end_lat = {{post.lunch_end_lat}}
+       var lunch_end_lon = {{post.lunch_end_lon}}
+      var map = L.map("map3").setView([lunch_end_lat, lunch_end_lon], 16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+      var marker = L.marker([lunch_end_lat, lunch_end_lon], {
+          alt: "MEE"
+        })
+        .addTo(map)
+        .bindPopup(
+          '<a style="color:red; text-decoration: none;  font-size:18px; font-weight: 700;" href="">{{post.user.first_name}} {{post.user.last_name}}</a>'
+        );
+{% endif %}
+        {% if  post.punch_out_lat %}
+        var punch_out_lat = {{post.punch_out_lat}}
+       var punch_out_lon = {{post.punch_out_lon}}
+      var map = L.map("map4").setView([punch_out_lat, punch_out_lon], 16);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+      var marker = L.marker([punch_out_lat, punch_out_lon], {
+          alt: "MEE"
+        })
+        .addTo(map)
+        .bindPopup(
+          '<a style="color:red; text-decoration: none;  font-size:18px; font-weight: 700;" href="">{{post.user.first_name}} {{post.user.last_name}}</a>'
+        );
+    {% endif %}
+
+  </script>
+
+{% endblock content %}

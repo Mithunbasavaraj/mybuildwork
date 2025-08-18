@@ -1,0 +1,254 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+	<div class="content  d-flex justify-content-center">
+					<div class="col-xl-8 d-flex">
+						<div class="card position-relative flex-fill">
+							<div class="card-header bg-dark">
+								<div class="d-flex align-items-center">
+                                    <span class="avatar avatar-lg avatar-rounded border border-white border-2 flex-shrink-0 me-5">
+                                        {% if post.image %}
+										<img src="{{post.image.url}}" alt="Img">
+                                        {% else %}
+                                        
+										<img src="{% static "img/user.jpg" %}"  alt="Img">
+                                        {% endif %}
+									</span>
+									<div>
+										<h5 class="text-white mb-1">{{user.first_name}} {{user.last_name}}</h5>
+										<div class="d-flex align-items-center">
+                                            {% if post.role %}
+                                            <p class="text-white fs-12 mb-0">{{post.role}}</p>
+                                            {% endif %}
+										<span class="mx-1"><i class="ti ti-point-filled text-primary"></i></span>
+										<p class="fs-12">{{user.designation}}</p>
+									
+									</div>
+									</div>
+								</div>
+								
+								{% if user.designation == "Owner" %}
+                                <a href="{% url 'base:update_profile' %}" class="btn btn-icon btn-sm text-white rounded-circle edit-top"> <i class="ti ti-edit"></i></a>
+								<a href="{% url 'base:edit_company_profile' %}" class="btn btn-primary btn-sm text-white mt-3"><i class="ti ti-edit"></i> Company Profile </a>
+								{% endif %}
+							</div>
+							<div class="card-body">
+								<hr>
+								<h2>Company Information</h2>
+								<hr>
+								{% if user.company.name %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Company Name</span>
+									<p class="text-gray-9">{{user.company.name}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.email %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Email</span>
+									<p class="text-gray-9">{{user.company.email}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.phone %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Phone Number</span>
+									<p class="text-gray-9">{{user.company.phone}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.address %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Address</span>
+									<p class="text-gray-9">{{user.company.address}}</p>
+								</div>
+								{% endif %}{% if user.company.about %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">About</span>
+									<p class="text-gray-9">{{user.company.about}}</p>
+								</div>
+								{% endif %}{% if user.company.subscribed_till %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">subscription End Data</span>
+									<p class="text-gray-9">{{user.company.subscribed_till}}</p>
+								</div>
+								{% endif %}{% if user.company.user_limit %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">User Limit</span>
+									<p class="text-gray-9">{{user.company.user_limit}}</p>
+								</div>
+								{% endif %}{% if user.company.gst %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">GST Number</span>
+									<p class="text-gray-9">{{user.company.gst}}</p>
+								</div>
+								{% endif %}{% if user.company.pan %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Pan Number</span>
+									<p class="text-gray-9">{{user.company.pan}}</p>
+								</div>
+								{% endif %}{% if user.company.bank_account_number %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Number</span>
+									<p class="text-gray-9">{{user.company.bank_account_number}}</p>
+								</div>
+								{% endif %}{% if user.company.bank_account_name %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Name</span>
+									<p class="text-gray-9">{{user.company.bank_account_name}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.bank_account_bank_name %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Bank Name</span>
+									<p class="text-gray-9">{{user.company.bank_account_bank_name}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.bank_account_branch_name %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Branch Name</span>
+									<p class="text-gray-9">{{user.company.bank_account_branch_name}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.ifsc_code %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">IFSC Number</span>
+									<p class="text-gray-9">{{user.company.ifsc_code}}</p>
+								</div>
+								{% endif %}
+								{% if user.company.upi_id %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">UPI Number</span>
+									<p class="text-gray-9">{{user.company.upi_id}}</p>
+								</div>
+								{% endif %}
+								<hr>
+								<hr>
+								<h2>User Information</h2>
+								<hr>
+								
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">User Name</span>
+									<p class="text-gray-9">{{user.username}}</p>
+								</div>
+								{% if user.phone %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Phone Number</span>
+									<p class="text-gray-9">{{post.phone}}</p>
+								</div>
+								{% endif %}{% if post.email%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Email Address</span>
+									<p class="text-gray-9">{{post.email}}</p>
+								</div>
+								{% endif %}{% if post.gender%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Gender </span>
+									<p class="text-gray-9">{{post.gender}}</p>
+								</div>
+								{% endif %}{% if post.occupation%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Occupation </span>
+									<p class="text-gray-9">{{post.occupation}}</p>
+								</div>
+									{% endif %}{% if post.marital_status%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Marital status </span>
+									<p class="text-gray-9">{{post.marital_status}}</p>
+								</div>
+									{% endif %}{% if post.age%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Age </span>
+									<p class="text-gray-9">{{post.age}}</p>
+								</div>
+									{% endif %}{% if post.nationality%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Nationality </span>
+									<p class="text-gray-9">{{post.nationality}}</p>
+								</div>
+									{% endif %}{% if post.state%}<div class="mb-3">
+									<span class="d-block mb-1 fs-13">State</span>
+									<p class="text-gray-9">{{post.state}}</p>
+								</div>
+									{% endif %}{% if post.aadhar%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Aadhar Number</span>
+									<p class="text-gray-9">{{post.aadhar}}</p>
+								</div>
+									{% endif %}{% if post.pan%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">PAN Number</span>
+									<p class="text-gray-9">{{post.pan}}</p>
+								</div>
+									{% endif %}{% if post.bank_account%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Number</span>
+									<p class="text-gray-9">{{post.bank_account}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Holder Name</span>
+									<p class="text-gray-9">{{post.bank_account_name}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_bank_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Bank Name</span>
+									<p class="text-gray-9">{{post.bank_account_bank_name}}</p>
+								</div>
+									{% endif %}{% if post.bank_account_branch_name%}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank Account Branch</span>
+									<p class="text-gray-9">{{post.bank_account_branch_name}}</p>
+								</div>
+									{% endif %}{% if post.ifsc_code%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Bank IFSC Number</span>
+									<p class="text-gray-9">{{post.ifsc_code}}</p>
+								</div>
+									{% endif %}{% if post.address%}
+                                	<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Address</span>
+									<p class="text-gray-9">{{post.address}}</p>
+								</div>
+									{% endif %}{% if user.others %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Others Details</span>
+									<p class="text-gray-9">{{post.others}}</p>
+								</div>
+									{% endif %}{% if user.last_login %}
+								<div class="mb-3">
+									<span class="d-block mb-1 fs-13">Last Login</span>
+									<p class="text-gray-9">{{user.last_login}} </p>
+								</div>
+									{% endif %}{% if user.date_joined %}
+								<div>
+									<span class="d-block mb-1 fs-13">Joined on</span>
+									<p class="text-gray-9">{{user.date_joined}}</p>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+						
+					</div>
+					
+					</div>
+					<div class="row container">
+					
+						{% if post.pan_image %}
+						<div class="mb-3 col-xl-4 ">
+						<span class="d-block mb-1 fs-13">Pan Image</span>
+										<img src="{{post.pan_image.url}}" alt="Img">
+									</div>
+									{% endif %}
+									{% if post.pan_image %}
+										<div class="mb-3 col-xl-4">
+									<span class="d-block mb-1 fs-13">Aadhar Image</span>
+										<img src="{{post.pan_image.url}}" alt="Img">
+									</div>		
+									{% endif %}
+									{% if post.shop_image %}
+								<div class="mb-3 col-xl-4">
+									<span class="d-block mb-1 fs-13">Shop Image</span>
+										<img src="{{post.shop_image.url}}" alt="Img">
+									</div>
+									{% endif %}
+								
+								</div>
+						
+{% endblock content %}

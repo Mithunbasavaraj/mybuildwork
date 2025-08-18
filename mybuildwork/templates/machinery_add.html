@@ -1,0 +1,147 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+
+
+	<div class="content  ">
+					<div class="">
+						<div class="card">
+							<div class="card-body">
+								<div class="border-bottom mb-3 pb-3">
+									<h4>Project</h4>
+								</div>
+								<form method="POST" enctype="multipart/form-data"  onsubmit="openLoader()">
+									{% csrf_token %}
+									
+									<div class="border-bottom mb-3">
+										<div class="row">
+
+                                            <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Work Name</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.work_name list="list"   class="form-control" placeholder="Work Name"  %}
+														<datalist id="list">
+																<option value="Jcb "> </option>
+																<option value="Hitachi "> </option>
+																<option value="Tipper "> </option>
+																<option value="Tractor "> </option>
+
+																
+														</datalist>
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Date</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.date type="date"   class="form-control" placeholder="Date"  %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Total Hour</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.total_hours type="number"   class="form-control" placeholder="Total Hour"  %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Total Cost</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.total_cost type="number"  class="form-control" placeholder="Total Cost"  %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Start Time</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.start_time  type="time" class="form-control" placeholder="Start Time"  %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Brake Start Time</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.break_start_time type="time"   class="form-control"   %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Brake End Time</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.break_end_time type="time"  class="form-control"   %}
+													</div>	
+												</div>
+											</div>
+											  <div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">End Time</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.end_time type="time"  class="form-control"   %}
+													</div>	
+												</div>
+											</div>
+
+										
+											
+                                            	<div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Photo</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.photo  class="form-control image-sign"  %}
+													</div>	
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Bill</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.bill  class="form-control image-sign"  %}
+													</div>	
+												</div>
+											</div>
+										
+										
+										</div>
+									</div>
+									
+									<div class="d-flex align-items-center justify-content-end">
+										<button type="submit" class="btn btn-primary">Save</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+<script>
+
+</script>
+{% endblock content %}

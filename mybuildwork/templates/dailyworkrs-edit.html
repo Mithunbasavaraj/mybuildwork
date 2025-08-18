@@ -1,0 +1,70 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+    	<div class="">
+						<div class="card">
+							<div class="card-body">
+								<div class="border-bottom mb-3 pb-3">
+									<h4>Details</h4>
+								</div>
+								<form method="POST" enctype="multipart/form-data" onsubmit="openLoader()">
+									{% csrf_token %}
+									<div class="border-bottom mb-3">
+										
+										<div class="row">
+											
+											
+											
+											<div class="col-md-5">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Number of Workers</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.no_of_workers  class="form-control" placeholder="Number of Workers"  %}
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Project Status</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.project_work_status  class="form-control" placeholder="Project Status"  %}
+													</div>
+												</div>
+											</div>
+										
+                                            <div class="col-md-3">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-2">
+														<label class="form-label mb-md-0">Photo</label>
+													</div>
+													<div class="col-md-10">
+														{% render_field form.image class="form-control image-sign" accept="image/*" capture="user" %}
+													</div>
+												</div>
+											</div>
+                                         
+											
+										</div>
+									</div>
+                                         
+									<div class="d-flex align-items-center justify-content-end">
+										<button class="btn btn-primary btn-lg" id="btn-submit" type="submit" >
+										Submit
+									</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+  
+</div >
+
+ 
+
+{% endblock content %}

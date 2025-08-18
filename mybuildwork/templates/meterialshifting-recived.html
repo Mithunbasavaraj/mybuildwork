@@ -1,0 +1,144 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+    	<div class="">
+						<div class="card">
+							<div class="card-body">
+								<div class="border-bottom mb-3 pb-3">
+									<h4>Details</h4>
+								</div>
+								<form method="POST" enctype="multipart/form-data" onsubmit="openLoader()">
+									{% csrf_token %}
+									<div class="border-bottom mb-3">
+										
+											<div class="row">
+											
+											
+											
+												<div class="col-md-4">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Vehicle Type</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.vehicle   class="form-control" placeholder="Select Vehicle" list="vehicle_list"  %}
+														<datalist id="vehicle_list">
+																<option value="JCB"> </option>
+																<option value="Tractor"> </option>
+																<option value="Tipper"> </option>
+																<option value="Lorre"> </option>
+																<option value="Tata-ace"> </option>
+																<option value="Canter"> </option>   
+																<option value="Auto"> </option>   	
+														</datalist>
+													</div>
+												</div>
+											</div>
+												<div class="col-md-4">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Material</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.Material_name  class="form-control" placeholder="Select Product" list="Material_name_list"   %}
+														<datalist id="Material_name_list">
+																<option value="Debris"> </option>
+																<option value="M Sand"> </option>
+																<option value="P Sand"> </option>
+																<option value="Cement"> </option>
+																<option value="Stone - 20mm"> </option>
+																<option value="Stone - 40mm"> </option>
+																<option value="Stone - 60mm"> </option>
+																				<option value="RMC"> </option>
+																<option value="Steel"> </option>
+																<option value="Granite"> </option>
+																<option value="Aluminum Window"> </option>
+																<option value="ACP"> </option>
+																<option value="Sanitary Item"> </option>
+																<option value="Electric Item"> </option>
+																<option value="Bricks"> </option>
+																<option value="Concrete Solid Blocks 4"> </option>
+																<option value="Concrete Solid Blocks 6"> </option>
+																<option value="Concrete Solid Blocks 8"> </option>
+																<option value="PVC Pipes"> </option>
+																<option value="GI Pipes"> </option>
+																<option value="Borewell Pumpset Materials"> </option>
+																<option value="School desk and furniture"> </option>
+																<option value="Green Board and Notice Board"> </option>
+																<option value="UPS and Batteries"> </option>
+																<option value="LED Street light"> </option>
+																<option value="Street light High Mast Poles"> </option>
+																<option value="Stones"> </option> 
+																<option value="Other"> </option>
+																<datalist>
+													</div>
+												</div>
+											</div>
+											
+										
+										
+                                            <div class="col-md-4">
+												<div class="row align-items-center mb-3">
+													<div class="col-md-4">
+														<label class="form-label mb-md-0">Photo</label>
+													</div>
+													<div class="col-md-8">
+														{% render_field form.image class="form-control image-sign" accept="image/*" capture="user" %}
+													</div>
+												</div>
+											</div>
+                                         
+											
+										</div>
+									</div>
+                                          {% render_field form.lat  id="lat" type="hidden" placeholder="Your Role"  %}
+                                         {% render_field form.lon  id="lon" type="hidden" placeholder="Your Role"  %}
+									<div class="d-flex align-items-center justify-content-end">
+										<button class="btn btn-primary btn-lg" id="btn-submit" type="submit" disabled>
+										<span class="spinner-border spinner-border-sm align-middle" role="status"
+											aria-hidden="true"></span>
+										Loading...
+									</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+  
+</div >
+ <script>
+    // JavaScript code will go here
+ 
+
+    window.onload = function() {
+      if ("geolocation" in navigator) {
+           navigator.geolocation.getCurrentPosition(showGPSLocation, error, getPosition)
+       var getPosition = {
+          enableHighAccuracy: true,
+          timeout: 9000,
+          maximumAge: 0
+        };
+        function error(err) {
+          alert(`ERROR(${err.code}): ${err.message}`);
+        };
+      } else {
+        gonative.android.geoLocation.promptLocationServices()
+      }
+    };
+
+    function showGPSLocation(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude; 
+      
+      document.getElementById("lat").value=latitude   
+      document.getElementById("lon").value=longitude   
+      let btn=document.getElementById("btn-submit")
+      btn.innerHTML="Submit"   
+      btn.innerHTML="Submit"   
+      btn.disabled=false
+
+    }
+  </script>
+{% endblock content %}

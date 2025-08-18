@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+       <div class="content d-flex justify-content-center ">
+    <div class="col-xl-6 ">
+						<div class="card">
+							
+                            <form method="POST">
+                             {% csrf_token %}
+							<div class="card-body">
+								
+                               <div class="form-floating mb-3">
+                                    <select name="investor" class="form-select " id="floatingInput" placeholder="Designation">
+                                        <option value="" selected disabled>----</option>
+                                        {% for posts in post %}
+                                        <option value="{{posts.id}}">{{posts.first_name}} {{posts.last_name}}</option>
+                                        {% endfor %}
+                                    </select>
+									<label for="floatingInput">Add Users to project</label>
+								</div>	
+								
+								<div class="text-end mt-4">
+                                
+                                <button type="submit" class="btn btn-primary w-50">submit</button>
+                            </div>
+							</div>
+                            </form>
+						</div>
+					</div>
+					</div>
+</div >
+
+{% endblock content %}

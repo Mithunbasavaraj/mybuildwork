@@ -1,0 +1,464 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<style>
+
+{% comment %} .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ffefa1;
+    background-color: #ccd5ae;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(97, 97, 97);
+} {% endcomment %}
+.currency .container{
+    background-color:#fed13c;
+    background-color: #ffefa1;
+    box-shadow: 0 0 1rem rgba(91, 99, 69, 0.7);
+    padding: 2.5rem;
+    min-height: 45vh;
+    min-width: 40vh;
+}
+.currency .container h2{
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: bolder;
+    color: rgb(97, 16, 16);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.currency form{
+    margin-top: 1.5rem;
+    font-weight: 600;
+}
+.currency .amount p{
+    font-size: 1.2rem;
+}
+.currency form input, .currency select, .currency button, .currency .message{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.currency form input{
+    margin-top: 0.5rem;
+    border: 1px solid rgb(192, 192, 192);
+    font-size: 1.2rem;
+    padding: 0.5rem 0 0.5rem 0.5rem ;
+    width: 97%;
+}
+.currency .dropdown{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+.currency .dropdown p{
+    font-size: 1.1rem;
+}
+.currency .dropdown .icon{
+    margin-top: 1.6rem;
+    padding: 0.5rem 0.7rem;
+    background-color: #ffdd6e;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Apply the spin animation to the icon */
+.currency .rotation{
+    animation: spin 0.5s infinite linear;
+    font-size: 1.4rem;
+}
+.currency .selectContainer{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff8d7;
+    border: 1px solid rgb(198, 198, 198);
+    width: 6.5rem;
+    padding: 0.2rem 0.3rem 0.2rem 0.5rem;
+}
+.currency .selectContainer img{
+    max-width: 1.9rem;
+}
+.currency .selectContainer select{
+    background-color: #fff8d7;
+    font-size: 1rem;
+    width: auto;
+    cursor: pointer;
+}
+.currency .message{
+    margin: 2rem 0 1.5rem 0;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #464646;
+    background-color: #ffc400;
+    padding: 0.75rem 0;
+}
+.currency button{
+    padding: 1rem 0;
+    background-color: #1b273b;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.currency button:hover{
+    background-color: #2b3d5d;
+}
+
+@media(max-width: 400px){
+  .currency .container{
+        padding: 1.3rem 1rem;
+    }
+    .currency .container h2{
+        font-size: 1.4rem;
+    }
+    .currency .dropdown .icon{
+        font-size: 1.2rem;
+    }
+    .currency .message{
+        padding: 0.5rem 0;
+        font-size: 1rem;
+    }
+    .currency .rotation{
+        font-size: 1rem;
+    }
+    .currency button{
+        padding: 0.75rem 0;
+        font-size: 0.8rem;
+    }
+}
+</style>
+<div class="content currency">
+  <div class="container ">
+
+    <h2>CURRENCY CONVERTER</h2>
+
+    <form>
+
+        <div class="amount">
+            <p>Enter Amount</p>
+            <input type="text" value="1" onchange="getExchangeRate()">
+        </div>
+
+        <div class="dropdown">
+
+            <div class="from">
+                <p>From</p>
+                <div class="selectContainer">
+                    <img src="https://flagsapi.com/US/flat/64.png" alt="">
+                    <select id="">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="icon">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </div>
+
+            <div class="to">
+                <p>To</p>
+                <div class="selectContainer">
+                    <img src="https://flagsapi.com/IN/flat/64.png" alt="">
+                    <select id="">
+                        
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="message">Getting exchange rate...</div>
+        
+      </form>
+      <button onclick="getExchangeRate()">Get Exchange Rate</button>
+
+</div>
+
+
+</div >
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  const countryList = {
+    AED: "AE",
+    AFN: "AF",
+    XCD: "AG",
+    ALL: "AL",
+    AMD: "AM",
+    ANG: "AN",
+    AOA: "AO",
+    AQD: "AQ",
+    ARS: "AR",
+    AUD: "AU",
+    AZN: "AZ",
+    BAM: "BA",
+    BBD: "BB",
+    BDT: "BD",
+    XOF: "BE",
+    BGN: "BG",
+    BHD: "BH",
+    BIF: "BI",
+    BMD: "BM",
+    BND: "BN",
+    BOB: "BO",
+    BRL: "BR",
+    BSD: "BS",
+    NOK: "BV",
+    BWP: "BW",
+    BYR: "BY",
+    BZD: "BZ",
+    CAD: "CA",
+    CDF: "CD",
+    XAF: "CF",
+    CHF: "CH",
+    CLP: "CL",
+    CNY: "CN",
+    COP: "CO",
+    CRC: "CR",
+    CUP: "CU",
+    CVE: "CV",
+    CYP: "CY",
+    CZK: "CZ",
+    DJF: "DJ",
+    DKK: "DK",
+    DOP: "DO",
+    DZD: "DZ",
+    ECS: "EC",
+    EEK: "EE",
+    EGP: "EG",
+    ETB: "ET",
+    EUR: "FR",
+    FJD: "FJ",
+    FKP: "FK",
+    GBP: "GB",
+    GEL: "GE",
+    GGP: "GG",
+    GHS: "GH",
+    GIP: "GI",
+    GMD: "GM",
+    GNF: "GN",
+    GTQ: "GT",
+    GYD: "GY",
+    HKD: "HK",
+    HNL: "HN",
+    HRK: "HR",
+    HTG: "HT",
+    HUF: "HU",
+    IDR: "ID",
+    ILS: "IL",
+    INR: "IN",
+    IQD: "IQ",
+    IRR: "IR",
+    ISK: "IS",
+    JMD: "JM",
+    JOD: "JO",
+    JPY: "JP",
+    KES: "KE",
+    KGS: "KG",
+    KHR: "KH",
+    KMF: "KM",
+    KPW: "KP",
+    KRW: "KR",
+    KWD: "KW",
+    KYD: "KY",
+    KZT: "KZ",
+    LAK: "LA",
+    LBP: "LB",
+    LKR: "LK",
+    LRD: "LR",
+    LSL: "LS",
+    LTL: "LT",
+    LVL: "LV",
+    LYD: "LY",
+    MAD: "MA",
+    MDL: "MD",
+    MGA: "MG",
+    MKD: "MK",
+    MMK: "MM",
+    MNT: "MN",
+    MOP: "MO",
+    MRO: "MR",
+    MTL: "MT",
+    MUR: "MU",
+    MVR: "MV",
+    MWK: "MW",
+    MXN: "MX",
+    MYR: "MY",
+    MZN: "MZ",
+    NAD: "NA",
+    XPF: "NC",
+    NGN: "NG",
+    NIO: "NI",
+    NPR: "NP",
+    NZD: "NZ",
+    OMR: "OM",
+    PAB: "PA",
+    PEN: "PE",
+    PGK: "PG",
+    PHP: "PH",
+    PKR: "PK",
+    PLN: "PL",
+    PYG: "PY",
+    QAR: "QA",
+    RON: "RO",
+    RSD: "RS",
+    RUB: "RU",
+    RWF: "RW",
+    SAR: "SA",
+    SBD: "SB",
+    SCR: "SC",
+    SDG: "SD",
+    SEK: "SE",
+    SGD: "SG",
+    SKK: "SK",
+    SLL: "SL",
+    SOS: "SO",
+    SRD: "SR",
+    STD: "ST",
+    SVC: "SV",
+    SYP: "SY",
+    SZL: "SZ",
+    THB: "TH",
+    TJS: "TJ",
+    TMT: "TM",
+    TND: "TN",
+    TOP: "TO",
+    TRY: "TR",
+    TTD: "TT",
+    TWD: "TW",
+    TZS: "TZ",
+    UAH: "UA",
+    UGX: "UG",
+    USD: "US",
+    UYU: "UY",
+    UZS: "UZ",
+    VEF: "VE",
+    VND: "VN",
+    VUV: "VU",
+    YER: "YE",
+    ZAR: "ZA",
+    ZMK: "ZM",
+    ZWD: "ZW",
+  };
+  
+  const dropDown = document.querySelectorAll(".dropdown select"),
+  formCurrency = document.querySelector(".from select"),
+  toCurrency = document.querySelector(".to select"),
+  getBtn = document.querySelector("form button"),
+  amount = document.querySelector(".amount input"),
+  exchangeRateText = document.querySelector(".message"),
+  exchangeIcon = document.querySelector(".dropdown .icon"),
+  apiKey = "99a0aec004527b1a155623da";
+  
+  
+  
+  for(let i = 0; i < dropDown.length; i++){
+      for(currency_code in countryList){
+          //By default it select From USD to INR
+          let selected;
+          if(i == 0){
+              selected = currency_code == "USD" ? "selected" : "";
+          }else if(i == 1){
+              selected = currency_code == "INR" ? "selected" : "";
+          }
+          //Creating option tag that passing currency code as a text & value
+          let optionTag = `<option value="${currency_code}" ${selected}>${currency_code}</option>`;
+          //Insert option tag into select tag
+          dropDown[i].insertAdjacentHTML("beforeend", optionTag);
+      }
+  
+      dropDown[i].addEventListener("change", e =>{
+          loadFlag(e.target);
+          //Calling loadflag with passing target element as an argument
+      })
+  }
+  
+  function loadFlag(element){
+      for(code in countryList){
+          if(code == element.value){ //If currency code of country list is equal to option value
+              let imgTag = element.parentElement.querySelector("img");//Select img tag for particular drop list
+              imgTag.src = `https://flagsapi.com/${countryList[code]}/flat/64.png`; //Passing country code of this selected currency code in this img url
+          }
+      }
+  }
+  
+  window.addEventListener("load", () =>{
+      getExchangeRate();
+  });
+  
+  getBtn.addEventListener("click", e =>{
+     e.preventDefault(); //Prevent default form submission through button
+      getExchangeRate();
+  });
+  
+  //Rotate the exchange icon
+  let rotationAngle = 0;// Initialize the rotation angle
+  
+  exchangeIcon.addEventListener("click", () => {
+      let tempCode = formCurrency.value;//Temporary currency code of FROM dropdown list
+      formCurrency.value = toCurrency.value;//Passing TO currency code to FROM currency code
+      toCurrency.value = tempCode;//Passing Temporary currency code to To currency code
+      loadFlag(formCurrency);// Calling loadFlag with passing select element of FROM
+      loadFlag(toCurrency);// Calling loadFlag with passing select element of TO
+      getExchangeRate();
+  
+      rotationAngle = (rotationAngle === 0) ? 180 : 0;
+  
+      // Apply the rotation to the exchange icon
+      exchangeIcon.style.transform = `rotate(${rotationAngle}deg)`;
+      exchangeIcon.style.transition = "transform 0.5s ease";    
+  })
+  
+  function getExchangeRate(){
+  
+  
+      let amountVal = amount.value;
+  
+      //If enter nothing or enter 0 then it autometically become 1
+      if(amountVal == "" || amountVal == "0"){
+          amount.value = "1";
+          amountVal = 1;
+      } 
+  
+      exchangeRateText.innerHTML = '<i class="fa-solid fa-arrows-rotate rotation"></i>';
+      
+  
+      //Fetch API and convert into JSON format
+  
+      let url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${formCurrency.value}`;
+  
+      fetch(url).then(response => response.json()).then(result => {
+  
+          let exchangeRate = result.conversion_rates[toCurrency.value];
+          let totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
+          exchangeRateText.innerHTML = `${amountVal} ${formCurrency.value} = ${totalExchangeRate} ${toCurrency.value}`;
+          
+      })
+  
+      .catch(error => {
+          exchangeRateText.innerHTML = "Failed to get exchange rate..";
+          console.error('Error fetching exchange rate:',error);
+      })
+  }
+  
+</script>
+
+
+{% endblock content %}
+

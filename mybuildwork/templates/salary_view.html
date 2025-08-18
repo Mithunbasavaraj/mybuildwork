@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% load static %}
+{% load widget_tweaks %}   
+{% block content %}
+<div class="content">
+      <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+     
+        <div class="card-body p-0">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Date </th>
+                  <th>From Date</th>
+                  <th>To Date</th>
+                  <th>Per Day Salary</th>
+                  <th>No Of Days</th>
+                  <th>Total Salary</th>
+                  <th>Photo</th>
+                 
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for posts in post %}
+                <tr>
+                  <td><h6 class="fw-medium">{{posts.added_date}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.from_date}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.to_date}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.per_day_salary}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.no_days}}</h6></td>
+                  <td><h6 class="fw-medium">{{posts.total_salary}}</h6></td>
+                  <td>
+                    <div class="action-icon d-inline-flex">
+                      {% if posts.photo %}
+                       <a href="{{posts.photo.url}}" target="_blank" class="me-5"
+                      ><i class="ti ti-download text-success"></i
+                      ></a> 
+                      {% endif %}
+                    </div>
+                  </td>
+                
+                </tr>
+                {% endfor %}
+                
+              
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div >
+
+{% endblock content %}
